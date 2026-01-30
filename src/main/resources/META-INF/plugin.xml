@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>com.github.livewirecomponentfolder</id>
+    <name>Livewire Component Folder</name>
+    <version>1.0.0</version>
+    <vendor>livewire-folder</vendor>
+
+    <description><![CDATA[
+        Folds Livewire multi-file component folders into a single collapsible node
+        in the project tree. Detects folders containing matching .php and .blade.php
+        files and presents them as a unified component entry, similar to C# code-behind
+        file nesting.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <treeStructureProvider
+            implementation="com.github.livewirecomponentfolder.LivewireTreeStructureProvider"
+            order="first"/>
+
+        <projectService
+            serviceImplementation="com.github.livewirecomponentfolder.LivewireSettings"/>
+
+        <projectConfigurable
+            instance="com.github.livewirecomponentfolder.LivewireSettingsConfigurable"
+            id="livewireComponentFolder.settings"
+            displayName="Livewire Component Folder"
+            parentId="tools"/>
+    </extensions>
+</idea-plugin>
