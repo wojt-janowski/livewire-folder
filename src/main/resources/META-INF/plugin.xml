@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.github.livewirecomponentfolder</id>
     <name>Livewire Component Folder</name>
-    <vendor email="wojt@clinically.com.au" url="https://github.com/wojt-janowski/livewire-folder">Wojt Janowski
+    <vendor email="wojt@clinically.com.au" url="https://github.com/wojt-janowski/livewire-folder">Wojt Janowski</vendor>
 
     <description><![CDATA[
         <h1>Livewire Component Folder</h1>
