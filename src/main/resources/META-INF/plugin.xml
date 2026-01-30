@@ -1,15 +1,37 @@
 <idea-plugin>
     <id>com.github.livewirecomponentfolder</id>
     <name>Livewire Component Folder</name>
-    <version>1.0.0</version>
-    <vendor>livewire-folder</vendor>
+    <vendor email="wojt@clinically.com.au" url="https://github.com/wojt-janowski/livewire-folder">Wojt Janowski
 
     <description><![CDATA[
-        Folds Livewire multi-file component folders into a single collapsible node
-        in the project tree. Detects folders containing matching .php and .blade.php
-        files and presents them as a unified component entry, similar to C# code-behind
-        file nesting.
+        <h1>Livewire Component Folder</h1>
+        <p>Enhanced project tree view for Laravel Livewire components.</p>
+
+        <h2>Features</h2>
+        <ul>
+            <li>Displays component name instead of folder name with lightning bolt icon (⚡)</li>
+            <li>Shows child files as extensions (.blade.php, .php, .css, .js)</li>
+            <li>Supports CSS and JavaScript files alongside PHP and Blade templates</li>
+            <li>Customizable double-click actions: expand/collapse, open files, or open selected files</li>
+            <li>Multiple split layouts: tabs, side-by-side, or stacked</li>
+            <li>Configurable file selection for opening specific file types</li>
+            <li>Auto-detection from config/livewire.php</li>
+        </ul>
+
+        <h2>Configuration</h2>
+        <p>Settings → Tools → Livewire Component Folder</p>
     ]]></description>
+
+    <change-notes><![CDATA[
+        <h3>1.0.0</h3>
+        <ul>
+            <li>Initial release</li>
+            <li>Component folder detection and display</li>
+            <li>Support for PHP, Blade, CSS, and JS files</li>
+            <li>Configurable double-click actions</li>
+            <li>Multiple split layout options</li>
+        </ul>
+    ]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
 
