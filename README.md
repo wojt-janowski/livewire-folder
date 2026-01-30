@@ -2,6 +2,8 @@
 
 A PhpStorm plugin that enhances the project tree view for Laravel Livewire components by organizing multi-file components into a clean, collapsible structure.
 
+**[Install from JetBrains Marketplace](https://plugins.jetbrains.com/plugin/29990-livewire-component-folder/)**
+
 ## Features
 
 ### 🎯 Smart Component Display
@@ -37,11 +39,13 @@ Select which file types to open:
 
 ## Installation
 
-### From JetBrains Marketplace (Coming Soon)
+### From JetBrains Marketplace
 1. Open PhpStorm
 2. Go to Settings → Plugins
 3. Search for "Livewire Component Folder"
 4. Click Install
+
+Or visit: https://plugins.jetbrains.com/plugin/29990-livewire-component-folder/
 
 ### Manual Installation
 1. Download the latest release `.zip` file
@@ -125,7 +129,9 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
-For issues and feature requests, please use the issue tracker on the plugin page.
+For issues and feature requests, please visit:
+- **Plugin Page**: https://plugins.jetbrains.com/plugin/29990-livewire-component-folder/
+- **GitHub**: https://github.com/wojt-janowski/livewire-folder
 
 ---
 
