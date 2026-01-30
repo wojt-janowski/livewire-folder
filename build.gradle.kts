@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.25"
-    id("org.jetbrains.intellij.platform") version "2.2.1"
+    id("org.jetbrains.intellij.platform")
 }
 
 group = "com.github.livewirecomponentfolder"
@@ -17,7 +17,6 @@ repositories {
 dependencies {
     intellijPlatform {
         phpstorm("2024.3")
-        instrumentationTools()
     }
 }
 

@@ -15,14 +15,28 @@ class LivewireSettings : PersistentStateComponent<LivewireSettings.State> {
 
     data class State(
         var scanPaths: MutableList<String> = mutableListOf("resources/views"),
-        var doubleClickAction: DoubleClickAction = DoubleClickAction.OPEN_PHP,
-        var readLivewireConfig: Boolean = true
+        var doubleClickAction: DoubleClickAction = DoubleClickAction.EXPAND_COLLAPSE,
+        var readLivewireConfig: Boolean = true,
+        var openPhp: Boolean = true,
+        var openBlade: Boolean = true,
+        var openCss: Boolean = false,
+        var openJs: Boolean = false,
+        var splitLayout: SplitLayout = SplitLayout.SIDE_BY_SIDE
     )
 
     enum class DoubleClickAction(val label: String) {
+        EXPAND_COLLAPSE("Expand/Collapse folder"),
         OPEN_PHP("Open PHP class"),
         OPEN_BLADE("Open Blade template"),
-        OPEN_BOTH_SPLIT("Open both side by side");
+        OPEN_SELECTED("Open selected files");
+
+        override fun toString(): String = label
+    }
+
+    enum class SplitLayout(val label: String) {
+        TABS("Tabs (no split)"),
+        SIDE_BY_SIDE("Side by side (vertical split)"),
+        STACKED("Stacked (horizontal split)");
 
         override fun toString(): String = label
     }

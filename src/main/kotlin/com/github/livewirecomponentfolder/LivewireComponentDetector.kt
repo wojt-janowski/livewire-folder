@@ -32,6 +32,15 @@ object LivewireComponentDetector {
     fun getBladeFile(dir: PsiDirectory): PsiFile? =
         dir.findFile("${getComponentBaseName(dir)}.blade.php")
 
+    fun getCssFile(dir: PsiDirectory): PsiFile? =
+        dir.findFile("${getComponentBaseName(dir)}.css")
+
+    fun getGlobalCssFile(dir: PsiDirectory): PsiFile? =
+        dir.findFile("global.css")
+
+    fun getJsFile(dir: PsiDirectory): PsiFile? =
+        dir.findFile("${getComponentBaseName(dir)}.js")
+
     private fun stripEmoji(name: String): String =
         name.removePrefix("⚡").trim()
 
