@@ -1,5 +1,6 @@
 package com.github.livewirecomponentfolder
 
+import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx
 import com.intellij.openapi.project.Project
@@ -7,6 +8,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiDirectory
 
 object LivewireDoubleClickHandler {
+    private val LOG = Logger.getInstance(LivewireDoubleClickHandler::class.java)
 
     fun handleNavigation(project: Project, directory: PsiDirectory): Boolean {
         val settings = LivewireSettings.getInstance(project)
@@ -97,10 +99,8 @@ object LivewireDoubleClickHandler {
                 val currentWindow = editorManagerEx.currentWindow
                 if (currentWindow != null) {
                     files.drop(1).forEach { file ->
-                        try {
-                            // Split vertically (1 = VERTICAL, side by side)
-                            currentWindow.split(1, true, file, true)
-                        } catch (e: Exception) {
+                        if (!splitEditorWindow(currentWindow, 1, file)) {
+                            // Fallback to opening as tab
                             editorManager.openFile(file, true)
                         }
                     }
@@ -119,10 +119,8 @@ object LivewireDoubleClickHandler {
                 val currentWindow = editorManagerEx.currentWindow
                 if (currentWindow != null) {
                     files.drop(1).forEach { file ->
-                        try {
-                            // Split horizontally (0 = HORIZONTAL, stacked)
-                            currentWindow.split(0, true, file, true)
-                        } catch (e: Exception) {
+                        if (!splitEditorWindow(currentWindow, 0, file)) {
+                            // Fallback to opening as tab
                             editorManager.openFile(file, true)
                         }
                     }
@@ -135,5 +133,31 @@ object LivewireDoubleClickHandler {
         }
 
         return true
+    }
+
+    /**
+     * Splits an editor window using reflection to handle API changes across IDE versions.
+     * @param window The editor window to split
+     * @param orientation 0 for HORIZONTAL (stacked), 1 for VERTICAL (side-by-side)
+     * @param file The file to open in the new split
+     * @return true if successful, false otherwise
+     */
+    private fun splitEditorWindow(window: Any, orientation: Int, file: VirtualFile): Boolean {
+        return try {
+            // Try to call split method with all parameters explicitly using reflection
+            // This avoids the synthetic $default method that was removed in 253+
+            val splitMethod = window.javaClass.getMethod(
+                "split",
+                Int::class.javaPrimitiveType,
+                Boolean::class.javaPrimitiveType,
+                VirtualFile::class.java,
+                Boolean::class.javaPrimitiveType
+            )
+            splitMethod.invoke(window, orientation, true, file, true)
+            true
+        } catch (e: Exception) {
+            LOG.warn("Failed to split editor window using reflection", e)
+            false
+        }
     }
 }

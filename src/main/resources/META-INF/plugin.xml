@@ -23,6 +23,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>1.0.3</h3>
+        <ul>
+            <li>Fix file watcher to use resolved scan paths including config/livewire.php auto-detection</li>
+        </ul>
         <h3>1.0.0</h3>
         <ul>
             <li>Initial release</li>
@@ -48,5 +52,8 @@
             id="livewireComponentFolder.settings"
             displayName="Livewire Component Folder"
             parentId="tools"/>
+
+        <postStartupActivity
+            implementation="com.github.livewirecomponentfolder.LivewireStartupActivity"/>
     </extensions>
 </idea-plugin>

@@ -52,7 +52,7 @@ object LivewireComponentDetector {
         dirPath.startsWith("$projectBasePath/$scanPath")
     }
 
-    private fun resolveScanPaths(project: Project): List<String> {
+    fun resolveScanPaths(project: Project): List<String> {
         val settings = LivewireSettings.getInstance(project)
         val paths = settings.state.scanPaths.toMutableList()
 

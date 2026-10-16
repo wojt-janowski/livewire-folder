@@ -1,11 +1,11 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.25"
+    id("org.jetbrains.kotlin.jvm") version "2.1.0"
     id("org.jetbrains.intellij.platform")
 }
 
 group = "com.github.livewirecomponentfolder"
-version = "1.0.1"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -16,12 +16,22 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        phpstorm("2024.3")
+        phpstorm("2025.3")
+        pluginVerifier()
+        zipSigner()
     }
 }
 
 kotlin {
     jvmToolchain(21)
+}
+
+intellijPlatform {
+    pluginVerification {
+        ides {
+            recommended()
+        }
+    }
 }
 
 tasks {
